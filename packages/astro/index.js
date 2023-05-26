@@ -5,18 +5,22 @@ export default function tokencss() {
     return {
         name: '@tokencss/vite',
         hooks: {
-			'astro:config:setup': async ({ config, injectScript }) => {
-				config.style.postcss.plugins.push(
-                    preset({
-                        stage: 3,
-                        features: {
-                            'nesting-rules': true
+            'astro:config:setup': async ({ updateConfig, injectScript }) => {
+                updateConfig({
+                    vite: {
+                        css: {
+                            postcss: {
+                                plugins: [
+                                    preset,
+                                    tokens()
+                                ]
+                            }
                         }
-                    }),
-                    tokens(),
-                );
+                    }
+                })
+
                 injectScript('page-ssr', `import '@tokencss/astro/base.css';`);
-			},
-		}
+            },
+        }
     }
 }

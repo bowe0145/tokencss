@@ -13,6 +13,6 @@
   "dependencies": {
     "@tokencss/astro": "workspace:*",
     "@tokencss/core": "workspace:*",
-    "astro": "^1.2.4"
+    "astro": "^2.4.1"
   }
 }
